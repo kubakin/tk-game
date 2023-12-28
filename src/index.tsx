@@ -11,7 +11,7 @@ const root = ReactDOM.createRoot(
 );
 
 const router = createBrowserRouter(routes)
-
+console.log(process.env);
 root.render(
   <ApolloProvider client={client}>
           <RouterProvider router={router}/>
