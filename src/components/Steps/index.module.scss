@@ -1,0 +1,16 @@
+.stepItem {
+  width: 30%
+}
+
+.steps {
+  width: 100% !important;
+
+  > div {
+    width: 33%;
+
+  }
+
+  .ant-steps-item {
+    //width: 33%;
+  }
+}
