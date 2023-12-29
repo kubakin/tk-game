@@ -4,8 +4,6 @@ WORKDIR /app
 
 COPY package*.json ./
 # Bundle app source
-ARG HOST
-ENV HOST $HOST
 
 ARG REACT_APP_HOST
 ENV REACT_APP_HOST $REACT_APP_HOST
