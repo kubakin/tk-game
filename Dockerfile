@@ -4,6 +4,7 @@ WORKDIR /app
 
 COPY package*.json ./
 # Bundle app source
+ENV HOST $HOST
 RUN npm ci
 
 COPY . .
