@@ -25,7 +25,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "env-cmd -f .env.dev react-scripts start",
     "prod": "serve -s build -l 3000",
     "build": "env-cmd -f .env.prod react-scripts build",
     "test": "react-scripts test",

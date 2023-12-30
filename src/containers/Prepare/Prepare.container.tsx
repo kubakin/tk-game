@@ -29,8 +29,8 @@ export const PrepaContainter = () => {
         <Meta
             title={`Название: ${game.name}`}
             style={{paddingBottom: '20px'}}
-            description={`Описание: ${game.description}`}
         />
+        <div dangerouslySetInnerHTML={{__html: game.description}}/>
         {/* <QRCode  value="https://picturesofpeoplescanningqrcodes.tumblr.com/" /> */}
         <div>
             <PersonLimit limit={game.personLimit}/>
