@@ -1,13 +1,21 @@
 import { useState, useEffect } from "react";
 
+export interface PositionInterface {
+  coords: {
+    longitude: number;
+    latitude: number;
+  };
+  timestamp: number;
+}
 export const usePosition = () => {
-  const [position, setPosition] = useState({});
+  const [position, setPosition] = useState<PositionInterface>();
   const [error, setError] = useState(null);
 
   const onChange = (val) => {
     // Здесь мы могли бы сохранить весь объект position, но для
     // ясности давайте явно перечислим, какие свойства нас интересуют.
-    console.log(val);
+    // console.log(val);
+    setPosition(val);
     // setPosition({latitude, longitude});
   };
 
@@ -31,5 +39,5 @@ export const usePosition = () => {
     // return () => geo.clearWatch(watcher);
   }, []);
 
-  return { ...position, error };
+  return { position, error };
 };

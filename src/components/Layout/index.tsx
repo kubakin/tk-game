@@ -1,25 +1,51 @@
 import React from "react";
-import {Layout} from "antd";
+import { Col, Layout, Row } from "antd";
 
-const {Header, Content, Footer} = Layout;
+const { Header, Content, Footer } = Layout;
 
 export const AppLayout = (props) => {
-    return <>
-        <Layout style={{minHeight: '100%', width: '100%'}}>
-            <Header style={{display: 'flex'}}>
-                <div style={{display: 'flex', alignItems: 'center'}}>
-                    <img
-                        style={{width: '30px', height: '30px'}}
-                        alt={''}
-                        src="/images/logo.png"/>
-                </div>
-                <div style={{color: 'white', paddingLeft: '10px'}}>Твой квест</div>
-            </Header>
-            <Layout>
-                <Content style={{minHeight: '100%', width: '100%'}}>
-                    {props.children}</Content>
-            </Layout>
-            <Footer>Contacts: tg - @daniapog</Footer>
+  const onExit = (e) => {
+    e.preventDefault();
+    localStorage.removeItem("access_token");
+    window.location.reload();
+  };
+  return (
+    <>
+      <Layout style={{ minHeight: "100%", width: "100%" }}>
+        <Header>
+          <Row style={{ height: "100%" }} align={"middle"} justify={"start"}>
+            <Col span={3} style={{ display: "flex" }}>
+              <img
+                style={{ width: "30px", height: "30px" }}
+                alt={""}
+                src="/images/logo.png"
+              />
+            </Col>
+
+            <Col span={16}>
+              <div style={{ color: "white" }}>Твой квест</div>
+            </Col>
+            {localStorage.getItem("access_token") && (
+              <Col span={3}>
+                <a
+                  onClick={onExit}
+                  style={{ color: "white", paddingLeft: "10px" }}
+                >
+                  Выход
+                </a>
+              </Col>
+            )}
+          </Row>
+        </Header>
+        <Layout>
+          <Content
+            style={{ minHeight: "100%", width: "100%", padding: "5px 20px" }}
+          >
+            {props.children}
+          </Content>
         </Layout>
+        <Footer>Contacts: tg - @daniapog</Footer>
+      </Layout>
     </>
-}
+  );
+};

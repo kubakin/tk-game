@@ -6,6 +6,15 @@ const teamFields = gql`
     name
     gameSession {
       id
+      score
+      currentTask {
+        id
+        task {
+          name
+          description
+          type
+        }
+      }
       game {
         id
         name
@@ -65,6 +74,15 @@ export interface UseMeData {
       name: string;
       gameSession: {
         id: string;
+        score: number;
+        currentTask: {
+          id: string;
+          task: {
+            description: string;
+            name: string;
+            type: string;
+          };
+        };
         game: {
           id: string;
           name: string;
