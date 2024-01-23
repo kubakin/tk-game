@@ -2,7 +2,7 @@ import { Badge, Col, Progress, Row } from "antd";
 import { useMe } from "../../data/query/user/me";
 import React from "react";
 import { EditOutlined, MessageOutlined } from "@ant-design/icons";
-import CountDown from "ant-design-pro/lib/CountDown";
+// import CountDown from "ant-design-pro/lib/CountDown";
 export const TaskHeader = () => {
   const { me } = useMe();
   const task = me?.data?.me?.team?.gameSession?.currentTask;
@@ -20,7 +20,7 @@ export const TaskHeader = () => {
       </Row>
       <Row justify={"center"}>
         <Col span={18}>
-          <CountDown target={targetTime} style={{ fontSize: 16 }} />
+          {/* <CountDown target={targetTime} style={{ fontSize: 16 }} /> */}
         </Col>
         <Col>
           <Badge dot>
