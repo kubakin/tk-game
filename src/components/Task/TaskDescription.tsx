@@ -11,8 +11,8 @@ export const TaskDescription = () => {
           <h2>{task.task.name}</h2>
         </Col>
       </Row>
-      <Row>
-        <Col>
+      <Row style={{ width: "100%" }}>
+        <Col span={24}>
           {" "}
           <div dangerouslySetInnerHTML={{ __html: task.task.description }} />
         </Col>
