@@ -1,12 +1,25 @@
 import { gql } from "@apollo/client";
+export enum GameInstanceStatusEnum {
+  Created = "Created",
+  Started = "Started",
+  Finished = "Finished",
+  Released = "Released",
+  Approved = "Approved",
+}
 
 const teamFields = gql`
   {
     id
     name
+    createdBy
     gameSession {
       id
       score
+      progressTasks
+      endAt
+      startedAt
+      totalTasks
+      status
       currentTask {
         id
         task {
@@ -18,8 +31,12 @@ const teamFields = gql`
       game {
         id
         name
+        rules
+        autoStart
         description
+        finalText
         personLimit
+        plannedAt
         cost
         taskStrategy
       }
@@ -71,10 +88,16 @@ export interface UseMeData {
     id: string;
     team: {
       id: string;
+      createdBy: string;
       name: string;
       gameSession: {
         id: string;
+        status: GameInstanceStatusEnum;
         score: number;
+        endAt: Date;
+        startedAt: Date;
+        progressTasks: number;
+        totalTasks: number;
         currentTask: {
           id: string;
           task: {
@@ -87,8 +110,12 @@ export interface UseMeData {
           id: string;
           name: string;
           description: string;
+          rules: string;
+        finalText: string;
           personLimit: number;
+          plannedAt: Date;
           cost: number;
+          autoStart: boolean;
           duration: number;
           taskStrategy: string;
         };

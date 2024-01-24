@@ -44,7 +44,12 @@ export const AppLayout = (props) => {
             {props.children}
           </Content>
         </Layout>
-        <Footer>Contacts: tg - @daniapog</Footer>
+        <Footer>
+          Prod by{" "}
+          <a target="_blank" href="https://vk.com/tvoy_kvest">
+            Твой квест
+          </a>
+        </Footer>
       </Layout>
     </>
   );

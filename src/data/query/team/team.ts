@@ -4,6 +4,7 @@ import {
   CREATE_SESSION,
   CreateSessionDto,
 } from "./query/CreateSession.mutation";
+import { CLOSE_SESSION } from "./query/CloseSession.mutation";
 
 const GET_USER_ME = gql`
   query GetUserMe {
@@ -36,6 +37,7 @@ interface UseMeData {
 export const useTeam = () => {
   const query = useQuery<UseMeData>(GET_USER_ME);
   const [changeSession] = useMutation(CHANGE_SESSION);
+  const [closeSession] = useMutation(CLOSE_SESSION);
   const [createTeam] = useMutation<
     { createTeam: string },
     { dto: CreateTeamDto }
@@ -47,6 +49,7 @@ export const useTeam = () => {
   return {
     ...query,
     changeSession,
+    closeSession,
     createTeam,
     createSession,
   };

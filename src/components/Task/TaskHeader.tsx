@@ -2,12 +2,13 @@ import { Badge, Col, Progress, Row } from "antd";
 import { useMe } from "../../data/query/user/me";
 import React from "react";
 import { EditOutlined, MessageOutlined } from "@ant-design/icons";
+import { MinCountDown } from "../Game/fields/MinCountDown";
 // import CountDown from "ant-design-pro/lib/CountDown";
 export const TaskHeader = () => {
   const { me } = useMe();
-  const task = me?.data?.me?.team?.gameSession?.currentTask;
-  const score = me?.data?.me?.team?.gameSession?.score;
-  const targetTime = new Date().getTime() + 3900000;
+  const gameInstance = me?.data?.me?.team?.gameSession;
+  const task = gameInstance?.currentTask;
+  const score = gameInstance?.score;
   return (
     <>
       <Row justify={"start"}>
@@ -16,13 +17,26 @@ export const TaskHeader = () => {
         </Col>
       </Row>
       <Row>
-        <Progress percent={50} size="small" status="active" />
+        <Progress
+          showInfo={false}
+          percent={(gameInstance.progressTasks / gameInstance.totalTasks) * 100}
+          size="small"
+          status="active"
+        />
       </Row>
-      <Row justify={"center"}>
-        <Col span={18}>
-          {/* <CountDown target={targetTime} style={{ fontSize: 16 }} /> */}
+      <Row justify={"start"}>
+        <Col span={17}>
+          {gameInstance.endAt && (
+            <>
+              Осталось{" "}
+              <MinCountDown
+                end={new Date(gameInstance.endAt)}
+              />
+              {" минут"}
+            </>
+          )}
         </Col>
-        <Col>
+        <Col offset={4}>
           <Badge dot>
             <MessageOutlined style={{ fontSize: 24 }} />
           </Badge>

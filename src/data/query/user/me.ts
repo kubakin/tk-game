@@ -3,10 +3,12 @@ import { USER_LEAVE } from "./query/Leave.mutation";
 import { GET_USER_ME, UseMeData } from "./query/Me.query";
 import { POSITION_SAVE, SendPositionDto } from "./query/position.mutation";
 import { SEND_ATTEMPT, SendAttemptDto } from "./query/send-attempt.mutation";
+import { USER_JOIN } from "./query/Join.mutation";
 
 export const useMe = () => {
   const me = useQuery<UseMeData>(GET_USER_ME);
   const [leave] = useMutation(USER_LEAVE);
+  const [join] = useMutation(USER_JOIN);
   const [send_position] = useMutation<
     { position_save: string },
     SendPositionDto
@@ -30,6 +32,7 @@ export const useMe = () => {
   return {
     me,
     leave,
+    join,
     onSendAttemt,
     onSendPosition,
   };
