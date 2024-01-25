@@ -1,3 +1,4 @@
+import { Navigate } from "react-router-dom";
 import { GamePage } from "./pages/GamePage";
 import { PreparePage } from "./pages/PreparePage";
 import { TeamPage } from "./pages/TeamPage";
@@ -12,4 +13,5 @@ export const routes = [
     path: "/game",
     element: <UserAuthProvider children={<GamePage />} />,
   },
+  { path: "*", element: <Navigate to="/prepare" replace /> },
 ];

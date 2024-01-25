@@ -7,8 +7,8 @@ function getUrls() {
       http: "http://#pattern#",
     },
     true: {
-      ws: "ws://#pattern#",
-      http: "http://#pattern#",
+      ws: "wss://#pattern#",
+      http: "https://#pattern#",
     },
   };
 
