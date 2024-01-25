@@ -20,7 +20,6 @@ const wsLink = new GraphQLWsLink(
 
 const httpLink = new HttpLink({
   uri: `${HTTP_URL}/graphql`,
-  credentials: "incude",
   headers: {
     Authorization: `Bearer ${localStorage.getItem("access_token")}`,
   },
@@ -40,6 +39,6 @@ const splitLink = split(
 
 export const client = new ApolloClient({
   link: splitLink,
-  credentials: "incude",
+  // credentials: "incude",
   cache: new InMemoryCache(),
 });
