@@ -43,7 +43,7 @@ const AuthForm = () => {
     try {
       const rs = await login(values);
       localStorage.setItem("access_token", rs.accessToken);
-      window.location.reload();
+      // window.location.reload();
     } catch (e) {
       api.error("Номер не зарегистирован");
     }
