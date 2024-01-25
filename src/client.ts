@@ -3,10 +3,11 @@ import { getMainDefinition } from "@apollo/client/utilities";
 import { GraphQLWsLink } from "@apollo/client/link/subscriptions";
 import { createClient } from "graphql-ws";
 import WebSocket from "ws";
+import { HTTP_URL, WS_URL } from "./config";
 
 const wsLink = new GraphQLWsLink(
   createClient({
-    url: `ws://${process.env.REACT_APP_HOST}/sub`,
+    url: `${WS_URL}/sub`,
     connectionParams: async () => {
       return {
         headers: {
@@ -18,7 +19,7 @@ const wsLink = new GraphQLWsLink(
 );
 
 const httpLink = new HttpLink({
-  uri: `http://${process.env.REACT_APP_HOST}/graphql`,
+  uri: `${HTTP_URL}/graphql`,
   headers: {
     Authorization: `Bearer ${localStorage.getItem("access_token")}`,
   },
