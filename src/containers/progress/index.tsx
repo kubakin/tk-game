@@ -1,6 +1,6 @@
 import { TaskDescription } from "../../components/Task/TaskDescription";
 import { TaskHeader } from "../../components/Task/TaskHeader";
-import { AnswerContainer } from "../Answer/answer.container";
+import { Answer } from "../../modules/Answer";
 
 export const ProgressContainer = () => {
   return (
@@ -8,7 +8,7 @@ export const ProgressContainer = () => {
       <TaskHeader />
       <TaskDescription />
       {/* <AppSteps/> */}
-      <AnswerContainer />
+      <Answer />
     </>
   );
 };

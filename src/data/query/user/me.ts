@@ -4,6 +4,7 @@ import { GET_USER_ME, UseMeData } from "./query/Me.query";
 import { POSITION_SAVE, SendPositionDto } from "./query/position.mutation";
 import { SEND_ATTEMPT, SendAttemptDto } from "./query/send-attempt.mutation";
 import { USER_JOIN } from "./query/Join.mutation";
+import { SEND_MESSAGE, SendMessageDto } from "./query/SendMessage.mutation";
 
 export const useMe = () => {
   const me = useQuery<UseMeData>(GET_USER_ME);
@@ -17,6 +18,14 @@ export const useMe = () => {
   const [sendAttempt] = useMutation<{ sendAttempt: string }, SendAttemptDto>(
     SEND_ATTEMPT
   );
+
+  const [sendMessage] = useMutation<{ sendMessage: string }, SendMessageDto>(
+    SEND_MESSAGE
+  );
+
+  const onSendMessage = async (message: string) => {
+    await sendMessage({variables: {message}});
+  }
 
   const onSendAttemt = async (dto: SendAttemptDto) => {
     await sendAttempt({ variables: dto });
@@ -35,5 +44,6 @@ export const useMe = () => {
     join,
     onSendAttemt,
     onSendPosition,
+    onSendMessage,
   };
 };

@@ -3,6 +3,7 @@ import { useMe } from "../../data/query/user/me";
 import React from "react";
 import { EditOutlined, MessageOutlined } from "@ant-design/icons";
 import { MinCountDown } from "../Game/fields/MinCountDown";
+import { Message } from "../../modules/Message";
 // import CountDown from "ant-design-pro/lib/CountDown";
 export const TaskHeader = () => {
   const { me } = useMe();
@@ -37,9 +38,7 @@ export const TaskHeader = () => {
           )}
         </Col>
         <Col offset={4}>
-          <Badge dot>
-            <MessageOutlined style={{ fontSize: 24 }} />
-          </Badge>
+          <Message/>
         </Col>
       </Row>
     </>
